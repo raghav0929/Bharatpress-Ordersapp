@@ -1,0 +1,92 @@
+<h2>Order Entry Form</h2>
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="orderDetails">Order Details:</label>
+    <input id="orderDetails" formControlName="orderDetails" placeholder="Enter order details" />
+    <div *ngIf="orderForm.get('orderDetails')?.invalid && orderForm.get('orderDetails')?.touched">
+      Order details are required.
+    </div>
+  </div>
+
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" formControlName="phoneNumber" placeholder="Enter 10-digit phone number" />
+    <div *ngIf="orderForm.get('phoneNumber')?.invalid && orderForm.get('phoneNumber')?.touched">
+      Enter a valid 10-digit phone number.
+    </div>
+  </div>
+
+  <div>
+    <label for="status">Status:</label>
+    <select id="status" formControlName="status">
+      <option value="">Select Status</option>
+      <option value="pending">Pending</option>
+      <option value="completed">Completed</option>
+    </select>
+    <div *ngIf="orderForm.get('status')?.invalid && orderForm.get('status')?.touched">
+      Status is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="priority">Priority:</label>
+    <select id="priority" formControlName="priority">
+      <option value="">Select Priority</option>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <div *ngIf="orderForm.get('priority')?.invalid && orderForm.get('priority')?.touched">
+      Priority is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="orderDate">Order Date:</label>
+    <input
+      type="date"
+      id="orderDate"
+      formControlName="orderDate"
+      class="form-control"
+    />
+  </div>
+  <div *ngIf="orderForm.get('orderDate')?.invalid && orderForm.get('orderDate')?.touched" class="text-danger">
+    Order date is required.
+  </div>
+  
+  <div class="form-group">
+    <label for="estimatedDays">Estimated Days:</label>
+    <input
+      type="number"
+      id="estimatedDays"
+      formControlName="estimatedDays"
+      class="form-control"
+      placeholder="Enter estimated days"
+    />
+  </div>
+  <div *ngIf="orderForm.get('estimatedDays')?.invalid && orderForm.get('estimatedDays')?.touched" class="text-danger">
+    Estimated days must be at least 1.
+  </div>
+
+  
+  <div class="form-group">
+    <label for="orderPhoto">Order Photo:</label>
+    <input
+      type="file"
+      #fileInput
+      id="orderPhoto"
+      (change)="onFileSelected($event)"
+      class="form-control"
+      accept="image/*"
+    />
+  </div>
+  <div *ngIf="selectedFile">
+    <p>Selected File: {{ selectedFile.name }}</p>
+    <img *ngIf="selectedFile" [src]="filePreview" alt="Preview" style="max-width: 100%; height: auto;" />
+  </div>
+
+  <button type="button" class="btn btn-secondary" (click)="resetForm(fileInput)">Reset</button>
+
+
+  <button type="submit" [disabled]="orderForm.invalid">Submit</button>
+</form>

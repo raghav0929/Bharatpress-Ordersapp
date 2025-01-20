@@ -1,0 +1,203 @@
+/* src/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  form input,
+  form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form button:disabled {
+    background-color: #ccc;
+  }
+  
+  form button:hover:enabled {
+    background-color: #0056b3;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .navbar {
+    margin-bottom: 20px;
+  }
+  
+  .navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  .p-datatable-tbody > tr:nth-child(odd) {
+    background-color: #f8f9fa; /* Light gray */
+  }
+  
+  .p-datatable-tbody > tr:nth-child(even) {
+    background-color: #ffffff; /* White */
+  }
+  
+  /* Highlight row on hover */
+  .p-datatable-tbody > tr:hover {
+    background-color: #e9ecef; /* Light blue-gray */
+    cursor: pointer;           /* Pointer cursor */
+  }
+  .p-datatable-tbody > tr > td{
+    text-align: center ! important;
+  }
+  .p-datatable-thead > tr > th{
+    text-align: center ! important;
+  }
+
+  /* Add a subtle shadow to the table */
+.p-datatable {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+/* Add horizontal scrolling for small screens */
+.p-datatable-wrapper {
+  overflow-x: auto;
+}
+
+/* Ensure text wraps inside cells */
+.p-datatable-tbody td {
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 10px !important;
+}
+/* Increase paginator font size */
+.p-paginator {
+  font-size: 1.1rem; /* Adjust the font size */
+}
+
+/* Add space between dropdown and page selectors */
+.p-paginator .p-dropdown {
+  margin-right: 12px; /* Add space to the right of dropdown */
+}
+
+/* Add spacing between page selectors */
+.p-paginator-pages .p-paginator-page {
+  margin: 0 10px; /* Add spacing on both sides of page selectors */
+}
+
+/* Optional: Highlight current page for better visibility */
+.p-paginator-pages .p-paginator-page.p-highlight {
+  background-color: #007bff; /* Highlight color */
+  color: white;
+  border-radius: 4px; /* Rounded corners for better look */
+}
+/* General paginator styling */
+.p-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem; /* Adjust the font size */
+  gap: 8px; /* Space between elements */
+}
+
+/* Style for navigation buttons (arrows) */
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-last {
+  color: #6c757d; /* Grey color for arrows */
+  font-size: 1.4rem; /* Larger size for arrows */
+  margin: 0 4px; /* Add space between buttons */
+  cursor: pointer;
+}
+
+/* Style for page numbers */
+.p-paginator .p-paginator-pages .p-paginator-page {
+  width: 40px; /* Fixed size for pages */
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%; /* Circular page numbers */
+  background-color: transparent;
+  color: #6c757d; /* Grey color for unselected pages */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 5px; /* Space between pages */
+}
+
+/* Highlight for selected page */
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  color: #6c757d; /* Dark background for selected page */
+  color: #fff; /* White text for selected page */
+  font-weight: bold;
+}
+
+/* Dropdown for items per page */
+.p-paginator .p-dropdown {
+  margin-left: 16px; /* Add space between dropdown and page buttons */
+  width: 70px; /* Adjust dropdown width */
+  text-align: center;
+}
+/* Custom style for the paginator */
+.custom-paginator .p-paginator {
+  font-size: 16px; /* Increase font size */
+}
+
+.custom-paginator .p-paginator .p-paginator-pages {
+  gap: 10px; /* Add spacing between page numbers */
+}
+
+.custom-paginator .p-dropdown {
+  margin-right: 10px; /* Add spacing between the dropdown and page numbers */
+}
+

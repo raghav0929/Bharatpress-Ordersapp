@@ -1,0 +1,183 @@
+/* Container style */
+:host {
+  display: block;
+  padding: 20px;
+  background-color: #f4f6f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+.p-table {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.p-table th {
+  background-color: #2e6da4;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.p-table td {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.p-table .p-sortable-column {
+  cursor: pointer;
+}
+
+.p-table .p-sortable-column p-sortIcon {
+  color: #ffffff;
+}
+
+/* Input styling for filters */
+input.p-inputtext {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+input.p-inputtext:focus {
+  border-color: #2e6da4;
+  outline: none;
+}
+
+/* Button styling */
+button {
+  background-color: #2e6da4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #24527a;
+}
+
+button:disabled {
+  background-color: #dcdcdc;
+  cursor: not-allowed;
+}
+
+/* Styling for the search inputs in table */
+.p-table th input.p-inputtext {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+/* Add some spacing for the rows */
+.p-table tbody tr td {
+  padding: 10px 12px;
+}
+
+/* Table Pagination */
+.p-paginator {
+  text-align: right;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.p-paginator .p-paginator-page {
+  color: #2e6da4;
+  font-weight: bold;
+}
+
+.p-paginator .p-paginator-page:hover {
+  background-color: #e9f3fc;
+}
+
+.p-paginator .p-paginator-page:disabled {
+  background-color: #f4f6f9;
+  cursor: not-allowed;
+}
+
+/* Styling for empty message */
+.p-table-empty-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #999;
+}
+
+/* Styling the table container */
+.p-table .p-paginator {
+  margin-top: 20px;
+}
+
+/* Make the table responsive */
+.p-datatable-wrapper {
+  overflow-x: auto;
+}
+
+/* Ensure text wraps in smaller columns */
+.p-datatable-tbody td {
+  white-space: normal;
+  word-wrap: break-word;
+}
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.badge-success {
+  background-color: #28a745;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+}
+
+.badge-info {
+  background-color: #17a2b8;
+}
+.p-datatable-thead > tr > th {
+  background-color: #343a40; /* Dark gray */
+  color: #ffffff;           /* White text */
+  text-align: center;
+  padding: 12px 8px;
+  font-weight: bold;
+  border: 1px solid #dee2e6; /* Border for separation */
+}
+.p-datatable-tbody > tr > td{
+  text-align: center ! important;
+}
+
+/* Style for order photos */
+.order-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Circular images */
+  object-fit: cover;
+  border: 1px solid #dee2e6; /* Subtle border */
+}
+

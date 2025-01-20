@@ -1,0 +1,81 @@
+<p-table 
+  #dt 
+  [value]="orders" 
+  paginator 
+  [rows]="10" 
+  [sortMode]="'single'" 
+  [rowsPerPageOptions]="[5, 10, 20]" 
+  [filterDelay]="300"
+  paginatorPosition="bottom"
+  class="custom-paginator"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="orderDetails">Order Details <p-sortIcon field="orderDetails"></p-sortIcon></th>
+      <th pSortableColumn="phoneNumber">Phone Number <p-sortIcon field="phoneNumber"></p-sortIcon></th>
+      <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+      <th pSortableColumn="priority">Priority <p-sortIcon field="priority"></p-sortIcon></th>
+      <th pSortableColumn="orderDate">Order Date <p-sortIcon field="orderDate"></p-sortIcon></th>
+      <th pSortableColumn="estimatedDays">Estimated Days <p-sortIcon field="estimatedDays"></p-sortIcon></th>
+      <th>Order Photo</th>
+    </tr>
+    <tr>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'orderDetails')" placeholder="Search Order Details">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'phoneNumber')" placeholder="Search Phone Number">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'status')" placeholder="Search Status">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'priority')" placeholder="Search Priority">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'orderDate')" placeholder="Search Order Date">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'estimatedDays')" placeholder="Search Estimated Days">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'orderPhoto')" placeholder="Search Order Photo">
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-order>
+    <tr>
+      <td>{{ order.orderDetails }}</td>
+      <td>{{ order.phoneNumber }}</td>
+      <td>
+        <span
+          [ngClass]="{
+            'badge badge-success': order.status === 'Completed',
+            'badge badge-warning': order.status === 'Pending'
+          }"
+          >{{ order.status }}</span
+        >
+      </td>
+      <td>
+        <span
+          [ngClass]="{
+            'badge badge-danger': order.priority === 'High',
+            'badge badge-warning': order.priority === 'Medium',
+            'badge badge-info': order.priority === 'Low'
+          }"
+          >{{ order.priority }}</span
+        >
+      </td>
+      <td>{{ order.orderDate }}</td>
+      <td>{{ order.estimatedDays }}</td>
+      <td>
+        <img
+          [src]="order.orderPhoto"
+          alt="Order Photo"
+          class="order-photo"
+        />
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
