@@ -16,6 +16,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { DropdownModule } from 'primeng/dropdown'; 
 import { PaginatorModule } from 'primeng/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InputTextModule,
     DropdownModule,
     PaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

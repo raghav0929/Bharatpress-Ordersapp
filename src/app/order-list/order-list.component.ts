@@ -1,5 +1,6 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Table } from 'primeng/table';
+import { OrderService } from '../services/order.service';
 
 interface Order {
   orderDetails: string;
@@ -18,7 +19,18 @@ interface Order {
   standalone:false
 })
 export class OrderListComponent implements AfterViewInit {
+
+  orderlist: Order[] = [];
+
+  constructor(private orderService: OrderService) {}
+
+
   @ViewChild('dt') dt: Table | undefined;  // Define ViewChild for p-table
+
+  ngOnInit(): void {
+    this.fetchOrders();
+  }
+
 
   orders: Order[] = [
     { orderDetails: 'Order 1', phoneNumber: '1234567890', status: 'Pending', priority: 'High', orderDate: '2025-01-01', estimatedDays: 5, orderPhoto: 'https://www.google.com/imgres?q=image&imgurl=https%3A%2F%2Fletsenhance.io%2Fstatic%2F8f5e523ee6b2479e26ecc91b9c25261e%2F1015f%2FMainAfter.jpg&imgrefurl=https%3A%2F%2Fletsenhance.io%2F&docid=-t22bY2ix3gHaM&tbnid=tYmxDgFq4MrkJM&vet=12ahUKEwjovc6Mn4SLAxWZyzgGHT3sObUQM3oECBYQAA..i&w=1280&h=720&hcb=2&itg=1&ved=2ahUKEwjovc6Mn4SLAxWZyzgGHT3sObUQM3oECBYQAA' },
@@ -52,5 +64,16 @@ export class OrderListComponent implements AfterViewInit {
       const filterValue = event.target.value.trim();
       this.dt.filter(filterValue, field, 'contains');
     }
+  }
+
+  fetchOrders(): void {
+    this.orderService.getOrders().subscribe(
+      (data) => {
+        this.orderlist = data;
+      },
+      (error) => {
+        console.error('Error fetching orders:', error);
+      }
+    );
   }
 }

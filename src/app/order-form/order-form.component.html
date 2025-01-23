@@ -53,7 +53,7 @@
   <div *ngIf="orderForm.get('orderDate')?.invalid && orderForm.get('orderDate')?.touched" class="text-danger">
     Order date is required.
   </div>
-  
+
   <div class="form-group">
     <label for="estimatedDays">Estimated Days:</label>
     <input
@@ -68,7 +68,6 @@
     Estimated days must be at least 1.
   </div>
 
-  
   <div class="form-group">
     <label for="orderPhoto">Order Photo:</label>
     <input
@@ -86,7 +85,6 @@
   </div>
 
   <button type="button" class="btn btn-secondary" (click)="resetForm(fileInput)">Reset</button>
-
 
   <button type="submit" [disabled]="orderForm.invalid">Submit</button>
 </form>
