@@ -16,7 +16,7 @@ interface Order {
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:8080/api/orders/submit'; // Update with your backend URL
+  private apiUrl = 'http://localhost:8080/api/orders'; // Update with your backend URL
 
   constructor(private http: HttpClient) {}
 
@@ -27,10 +27,10 @@ export class OrderService {
 
     const headers = new HttpHeaders(); // No need to set Content-Type, Angular handles it for FormData
 
-    return this.http.post(this.apiUrl, formData, { headers, responseType: 'text' as 'json' });
+    return this.http.post(this.apiUrl+'/submit', formData, { headers, responseType: 'text' as 'json' });
   }
 
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.apiUrl+'/getorders');
+    return this.http.get<Order[]>(this.apiUrl+'/all');
   }
 }

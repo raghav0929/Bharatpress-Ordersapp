@@ -20,8 +20,8 @@
     <label for="status">Status:</label>
     <select id="status" formControlName="status">
       <option value="">Select Status</option>
-      <option value="pending">Pending</option>
-      <option value="completed">Completed</option>
+      <option value="Pending">Pending</option>
+      <option value="Completed">Completed</option>
     </select>
     <div *ngIf="orderForm.get('status')?.invalid && orderForm.get('status')?.touched">
       Status is required.
@@ -32,9 +32,9 @@
     <label for="priority">Priority:</label>
     <select id="priority" formControlName="priority">
       <option value="">Select Priority</option>
-      <option value="low">Low</option>
-      <option value="medium">Medium</option>
-      <option value="high">High</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
     </select>
     <div *ngIf="orderForm.get('priority')?.invalid && orderForm.get('priority')?.touched">
       Priority is required.
