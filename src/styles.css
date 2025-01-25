@@ -201,20 +201,34 @@ body {
   margin-right: 10px; /* Add spacing between the dropdown and page numbers */
 }
 
-/* Center the dialog on the screen */
+/* Increase the size of the dialog */
 .p-dialog {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 70vw; /* Adjust as needed */
+  max-width: 1000px;
 }
 
-/* Customize the dialog header */
+/* Add padding and space between fields */
+.p-dialog .p-dialog-content .p-fluid .p-field {
+  margin-bottom: 15px; /* Adds space between the fields */
+}
+
+/* Style the dialog header */
 .p-dialog .p-dialog-header {
   background-color: #007bff;
   color: #fff;
   border-radius: 8px 8px 0 0;
   padding: 10px;
   text-align: center;
+}
+
+/* Ensure the dialog header content is aligned and spaced */
+.p-dialog .p-dialog-header .p-dialog-title {
+  margin-right: auto;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+  font-size: 1.5rem; /* Increase the size of the close button */
+  margin-left: 10px; /* Adds space between the close button and the title */
 }
 
 /* Customize the dialog content */
@@ -242,7 +256,4 @@ body {
 .p-dialog {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-}
-.p-dialog-header-actions{
-  padding: 0px 10px;
 }

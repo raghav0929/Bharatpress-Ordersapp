@@ -49,7 +49,7 @@
   </ng-template>
 
   <ng-template pTemplate="body" let-order>
-    <tr pSelectableRow pSelectableRowValue='order'>
+    <tr [pSelectableRow]="order">
       <td>{{ order.orderDetails }}</td>
       <td>{{ order.phoneNumber }}</td>
       <td>
