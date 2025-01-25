@@ -201,3 +201,48 @@ body {
   margin-right: 10px; /* Add spacing between the dropdown and page numbers */
 }
 
+/* Center the dialog on the screen */
+.p-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Customize the dialog header */
+.p-dialog .p-dialog-header {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Customize the dialog content */
+.p-dialog .p-dialog-content {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Customize the dialog footer */
+.p-dialog .p-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Style for buttons in the footer */
+.p-dialog-footer .p-button {
+  margin-left: 10px;
+}
+
+/* Add a shadow effect to the dialog */
+.p-dialog {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+.p-dialog-header-actions{
+  padding: 0px 10px;
+}

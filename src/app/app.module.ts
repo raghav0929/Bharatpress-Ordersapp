@@ -17,6 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { PaginatorModule } from 'primeng/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     DropdownModule,
     PaginatorModule,
     BrowserAnimationsModule,
-    HttpClientModule 
+    HttpClientModule ,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
