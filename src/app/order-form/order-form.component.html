@@ -43,12 +43,7 @@
 
   <div class="form-group">
     <label for="orderDate">Order Date:</label>
-    <input
-      type="date"
-      id="orderDate"
-      formControlName="orderDate"
-      class="form-control"
-    />
+    <input type="date" id="orderDate" formControlName="orderDate" class="form-control" />
   </div>
   <div *ngIf="orderForm.get('orderDate')?.invalid && orderForm.get('orderDate')?.touched" class="text-danger">
     Order date is required.
@@ -56,28 +51,33 @@
 
   <div class="form-group">
     <label for="estimatedDays">Estimated Days:</label>
-    <input
-      type="number"
-      id="estimatedDays"
-      formControlName="estimatedDays"
-      class="form-control"
-      placeholder="Enter estimated days"
-    />
+    <input type="number" id="estimatedDays" formControlName="estimatedDays" class="form-control" placeholder="Enter estimated days" />
   </div>
   <div *ngIf="orderForm.get('estimatedDays')?.invalid && orderForm.get('estimatedDays')?.touched" class="text-danger">
     Estimated days must be at least 1.
   </div>
 
   <div class="form-group">
+    <label for="totalAmount">Total Amount:</label>
+    <input type="number" id="totalAmount" formControlName="totalAmount" class="form-control" placeholder="Enter total amount" (input)="calculateRemainingBalance()" />
+  </div>
+  <div *ngIf="orderForm.get('totalAmount')?.invalid && orderForm.get('totalAmount')?.touched" class="text-danger">
+    Total amount is required.
+  </div>
+
+  <div class="form-group">
+    <label for="advance">Advance:</label>
+    <input type="number" id="advance" formControlName="advance" class="form-control" placeholder="Enter advance amount" (input)="calculateRemainingBalance()" />
+  </div>
+
+  <div class="form-group">
+    <label for="remainingBalance">Remaining Balance:</label>
+    <input type="number" id="remainingBalance" formControlName="remainingBalance" class="form-control" readonly />
+  </div>
+
+  <div class="form-group">
     <label for="orderPhoto">Order Photo:</label>
-    <input
-      type="file"
-      #fileInput
-      id="orderPhoto"
-      (change)="onFileSelected($event)"
-      class="form-control"
-      accept="image/*"
-    />
+    <input type="file" #fileInput id="orderPhoto" (change)="onFileSelected($event)" class="form-control" accept="image/*" />
   </div>
   <div *ngIf="selectedFile">
     <p>Selected File: {{ selectedFile.name }}</p>

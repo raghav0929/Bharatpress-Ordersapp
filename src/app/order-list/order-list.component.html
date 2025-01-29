@@ -21,6 +21,9 @@
       <th pSortableColumn="priority">Priority <p-sortIcon field="priority"></p-sortIcon></th>
       <th pSortableColumn="orderDate">Order Date <p-sortIcon field="orderDate"></p-sortIcon></th>
       <th pSortableColumn="estimatedDays">Estimated Days <p-sortIcon field="estimatedDays"></p-sortIcon></th>
+      <th pSortableColumn="totalAmount">Total Amount <p-sortIcon field="totalAmount"></p-sortIcon></th>
+      <th pSortableColumn="advance">Advance <p-sortIcon field="advance"></p-sortIcon></th>
+      <th pSortableColumn="remainingBalance">Remaining Balance <p-sortIcon field="remainingBalance"></p-sortIcon></th>
       <th>Order Photo</th>
     </tr>
     <tr>
@@ -41,6 +44,15 @@
       </th>
       <th>
         <input pInputText type="text" (input)="filterGlobal($event, 'estimatedDays')" placeholder="Search Estimated Days">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'totalAmount')" placeholder="Search total Amount">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'advance')" placeholder="Search advance">
+      </th>
+      <th>
+        <input pInputText type="text" (input)="filterGlobal($event, 'remainingBalance')" placeholder="Search remaining Balance">
       </th>
       <th>
         <input pInputText type="text" (input)="filterGlobal($event, 'orderPhoto')" placeholder="Search Order Photo">
@@ -73,6 +85,9 @@
       </td>
       <td>{{ order.orderDate }}</td>
       <td>{{ order.estimatedDays }}</td>
+      <td>{{ order.totalAmount }}</td>
+      <td>{{ order.advance }}</td>
+      <td>{{ order.remainingBalance }}</td>
       <td>
         <img
         [src]="'http://localhost:8080/api/files/' + order.orderPhoto"

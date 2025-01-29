@@ -9,6 +9,9 @@ interface Order {
   priority: string;
   orderDate: string;
   estimatedDays: number;
+  totalAmount: number;
+  advance: number;
+  remainingBalance: number;
   orderPhoto: string;
 }
 
