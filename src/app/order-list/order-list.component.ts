@@ -1,6 +1,7 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { OrderService } from '../services/order.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Order {
   orderDetails: string;
@@ -38,9 +39,23 @@ priorityOptions = [
   { label: 'Medium', value: 'Medium' },
   { label: 'Low', value: 'Low' },
 ];
+editOrderForm: FormGroup;
+selectedOrderId: number | null = null;
 
-  constructor(private orderService: OrderService) {}
-
+constructor(private fb: FormBuilder, private orderService: OrderService) {
+  this.editOrderForm = this.fb.group({
+    orderDetails: ['', Validators.required],
+    phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // 10-digit phone validation
+    status: ['', Validators.required],   // ✅ Ensure this is included
+    priority: ['', Validators.required], // ✅ Ensure this is included
+    orderDate: ['', Validators.required],
+    estimatedDays: [0, Validators.required],
+    totalAmount: [0, Validators.required],
+    advance: [0, Validators.required],
+    remainingBalance: [{ value: 0, disabled: true }], // Readonly
+    orderPhoto: [''] // Readonly, since we are not updating it
+  });
+}
 
   @ViewChild('dt') dt: Table | undefined;  // Define ViewChild for p-table
 
@@ -90,19 +105,49 @@ priorityOptions = [
   }
 
     // Open the edit dialog when a row is clicked
-    openEditDialog(event: any): void {
-      this.selectedOrder = { ...event.data }; // Clone the selected row data
-      this.editDialogVisible = true; // Show the dialog
+    openEditDialog(order: any) {
+      this.selectedOrderId = order['data'].id;  // Store the selected order's ID
+    
+      // Ensure all fields are populated correctly
+      this.editOrderForm.patchValue({
+        orderDetails: order['data'].orderDetails || '',
+        phoneNumber: order['data'].phoneNumber || '',
+        status: order['data'].status || '',
+        priority: order['data'].priority || '',
+        orderDate: order['data'].orderDate || '',
+        estimatedDays: order['data'].estimatedDays || '',
+        totalAmount: order['data'].totalAmount || '',
+        advance: order['data'].advance || '',
+        remainingBalance: order['data'].remainingBalance || (order['data'].totalAmount - order['data'].advance),
+      });
+    
+      this.editDialogVisible = true;  // Open the edit dialog
     }
+
+    calculateRemainingBalance() {
+      const total = this.editOrderForm.get('totalAmount')!.value || 0;
+      const advance = this.editOrderForm.get('advance')!.value || 0;
+      this.editOrderForm.patchValue({ remainingBalance: total - advance });
+    }
+    
   
     // Save the edited order
-    saveOrderChanges(): void {
-      const index = this.orderlist.findIndex(
-        (o) => o.orderDetails === this.selectedOrder.orderDetails
-      );
-      if (index !== -1) {
-        this.orderlist[index] = { ...this.selectedOrder }; // Update the order in the list
+    updateOrder() {
+      if (this.editOrderForm.valid && this.selectedOrderId !== null) {
+        const updatedOrder = {
+          ...this.editOrderForm.value,
+          id: this.selectedOrderId,
+        };
+    
+        this.orderService.updateOrder(updatedOrder).subscribe(
+          () => {
+            console.log('Order updated successfully');
+            this.editDialogVisible = false;
+            this.fetchOrders(); // Refresh the order list
+          },
+          (error) => console.error('Error updating order:', error)
+        );
       }
-      this.editDialogVisible = false; // Close the dialog
     }
+    
 }

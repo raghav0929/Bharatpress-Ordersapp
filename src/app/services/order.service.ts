@@ -36,4 +36,11 @@ export class OrderService {
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.apiUrl+'/all');
   }
+
+  updateOrder(order: any) {
+    return this.http.put(`http://localhost:8080/api/orders/${order.id}`, order, {
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+  
 }

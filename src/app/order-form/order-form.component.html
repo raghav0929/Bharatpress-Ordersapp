@@ -84,7 +84,10 @@
     <img *ngIf="selectedFile" [src]="filePreview" alt="Preview" style="max-width: 100%; height: auto;" />
   </div>
 
-  <button type="button" class="btn btn-secondary" (click)="resetForm(fileInput)">Reset</button>
+  <button type="button" pButton class="btn btn-secondary" (click)="resetForm(fileInput)">Reset</button>
 
-  <button type="submit" [disabled]="orderForm.invalid">Submit</button>
+  <button type="submit" pButton   [disabled]="orderForm.invalid">Submit</button>
+  
 </form>
+<p-messages></p-messages>
+ 

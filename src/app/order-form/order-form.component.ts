@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OrderService } from '../services/order.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-order-form',
@@ -13,7 +14,7 @@ export class OrderFormComponent implements OnInit {
   selectedFile: File | null = null;
   filePreview: string | ArrayBuffer | null = null;
 
-  constructor(private fb: FormBuilder, private orderService: OrderService) {
+  constructor(private fb: FormBuilder, private orderService: OrderService,private messageService: MessageService) {
     this.orderForm = this.fb.group({
       orderDetails: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
@@ -50,6 +51,12 @@ export class OrderFormComponent implements OnInit {
     this.orderForm.reset(); // Reset the form fields
     fileInput.value = '';   // Clear the file input
     this.selectedFile = null;
+
+    this.messageService.add({ 
+      severity: "success", 
+      summary: "GeeksforGeeks", 
+      detail: "Success Service Message", 
+    });
   }
 
   calculateRemainingBalance(): void {
@@ -80,7 +87,7 @@ export class OrderFormComponent implements OnInit {
         error => {
           console.error('Error!', error);
         }
-      );
+      ); 
     } else {
       console.log('Form is invalid');
     }

@@ -107,80 +107,62 @@
     <img [src]="modalImage" alt="Order Photo" class="modal-image" />
   </div>
 </div>
-<p-dialog 
-  [(visible)]="editDialogVisible" 
-  header="Edit Order" 
-  [closable]="true" 
-  [modal]="true" 
-  [style]="{ width: '50vw' }"
->
-  <div *ngIf="selectedOrder">
-    <div class="p-fluid">
-      <div class="p-field">
-        <label for="orderDetails">Order Details</label>
-        <input 
-          id="orderDetails" 
-          type="text" 
-          pInputText 
-          [(ngModel)]="selectedOrder.orderDetails" 
-        />
-      </div>
-
-      <div class="p-field">
-        <label for="phoneNumber">Phone Number</label>
-        <input 
-          id="phoneNumber" 
-          type="text" 
-          pInputText 
-          [(ngModel)]="selectedOrder.phoneNumber" 
-        />
-      </div>
-
-      <div class="p-field">
-        <label for="status">Status</label>
-        <p-dropdown 
-          id="status" 
-          [options]="statusOptions" 
-          [(ngModel)]="selectedOrder.status"
-          placeholder="Select Status"
-        ></p-dropdown>
-      </div>
-
-      <div class="p-field">
-        <label for="priority">Priority</label>
-        <p-dropdown 
-          id="priority" 
-          [options]="priorityOptions" 
-          [(ngModel)]="selectedOrder.priority"
-          placeholder="Select Priority"
-        ></p-dropdown>
-      </div>
-
-      <div class="p-field">
-        <label for="orderDate">Order Date</label>
-        <input 
-          id="orderDate" 
-          type="date" 
-          pInputText 
-          [(ngModel)]="selectedOrder.orderDate" 
-        />
-      </div>
+<p-dialog header="Edit Order" [(visible)]="editDialogVisible" [modal]="true" [closable]="true">
+  <form [formGroup]="editOrderForm">
+    <div>
+      <label for="editOrderDetails">Order Details:</label>
+      <input id="editOrderDetails" formControlName="orderDetails" placeholder="Enter order details" />
     </div>
-  </div>
-  <p-footer>
-    <button 
-      pButton 
-      label="Save" 
-      icon="pi pi-check" 
-      (click)="saveOrderChanges()" 
-      class="p-button-rounded p-button-success"
-    ></button>
-    <button 
-      pButton 
-      label="Cancel" 
-      icon="pi pi-times" 
-      (click)="editDialogVisible = false" 
-      class="p-button-rounded p-button-secondary"
-    ></button>
-  </p-footer>
+
+    <div>
+      <label for="editPhoneNumber">Phone Number:</label>
+      <input id="editPhoneNumber" formControlName="phoneNumber" placeholder="Enter phone number" />
+    </div>
+
+    <div>
+      <label for="editStatus">Order Status:</label>
+      <select id="editStatus" formControlName="status">
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="editPriority">Priority:</label>
+      <select id="editPriority" formControlName="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="editOrderDate">Order Date:</label>
+      <input id="editOrderDate" formControlName="orderDate" type="date" />
+    </div>
+
+    <div>
+      <label for="editEstimatedDays">Estimated Days:</label>
+      <input id="editEstimatedDays" formControlName="estimatedDays" type="number" />
+    </div>
+
+    <div>
+      <label for="editTotalAmount">Total Amount:</label>
+      <input id="editTotalAmount" formControlName="totalAmount" type="number" />
+    </div>
+
+    <div>
+      <label for="editAdvance">Advance:</label>
+      <input id="editAdvance" formControlName="advance" type="number" (input)="calculateRemainingBalance()" />
+    </div>
+
+    <div>
+      <label for="editRemainingBalance">Remaining Balance:</label>
+      <input id="editRemainingBalance" formControlName="remainingBalance" type="number" readonly />
+    </div>
+
+    <div class="text-center mt-3">
+      <button type="button" (click)="updateOrder()" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
 </p-dialog>

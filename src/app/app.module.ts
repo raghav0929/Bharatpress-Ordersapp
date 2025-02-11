@@ -18,6 +18,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
+import {MessagesModule} from 'primeng/messages'; 
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DialogModule } from 'primeng/dialog';
     PaginatorModule,
     BrowserAnimationsModule,
     HttpClientModule ,
-    DialogModule
+    DialogModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
