@@ -1,3 +1,6 @@
+<button pButton label="Delete" icon="pi pi-trash" class="p-button-danger delete-btn" (click)="deleteSelectedOrders()"></button>
+
+
 <p-table 
   #dt 
   [value]="orderlist" 
@@ -9,12 +12,12 @@
   [filterDelay]="300"
   paginatorPosition="bottom"
   class="custom-paginator"
-  (onRowSelect)="openEditDialog($event)"
-  selectionMode="single"
-  [(selection)]="selectedOrder"
+ selectionMode="multiple"
+  [(selection)]="selectedOrders"
 >
   <ng-template pTemplate="header">
     <tr>
+      <th><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
       <th pSortableColumn="orderDetails">Order Details <p-sortIcon field="orderDetails"></p-sortIcon></th>
       <th pSortableColumn="phoneNumber">Phone Number <p-sortIcon field="phoneNumber"></p-sortIcon></th>
       <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
@@ -23,10 +26,11 @@
       <th pSortableColumn="estimatedDays">Estimated Days <p-sortIcon field="estimatedDays"></p-sortIcon></th>
       <th pSortableColumn="totalAmount">Total Amount <p-sortIcon field="totalAmount"></p-sortIcon></th>
       <th pSortableColumn="advance">Advance <p-sortIcon field="advance"></p-sortIcon></th>
-      <th pSortableColumn="remainingBalance">Remaining Balance <p-sortIcon field="remainingBalance"></p-sortIcon></th>
+      <th pSortableColumn="remainingBalance">Balance <p-sortIcon field="remainingBalance"></p-sortIcon></th>
       <th>Order Photo</th>
     </tr>
     <tr>
+      <th></th>
       <th>
         <input pInputText type="text" (input)="filterGlobal($event, 'orderDetails')" placeholder="Search Order Details">
       </th>
@@ -61,7 +65,8 @@
   </ng-template>
 
   <ng-template pTemplate="body" let-order>
-    <tr [pSelectableRow]="order">
+    <tr [pSelectableRow]="order" (click)="onRowClick($event, order)">
+      <td><p-tableCheckbox [value]="order"></p-tableCheckbox></td>
       <td>{{ order.orderDetails }}</td>
       <td>{{ order.phoneNumber }}</td>
       <td>

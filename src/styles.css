@@ -257,3 +257,62 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 }
+
+/* Checkbox Styling */
+p-checkbox .p-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #007bff;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+p-checkbox .p-checkbox .p-checkbox-box {
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+p-checkbox .p-checkbox:hover {
+  background-color: #e2e6ea;
+  border-color: #0056b3;
+}
+
+/* Checked state */
+p-checkbox .p-checkbox-box.p-highlight {
+  background-color: #007bff !important;
+  border-color: #0056b3 !important;
+}
+
+/* Table Row Styling */
+tr {
+  background-color: #f4f6f8;
+  border-bottom: 2px solid #dee2e6;
+}
+
+tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Selected Row */
+tr.p-highlight {
+  background-color: #d1ecf1 !important;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+  margin-bottom: 10px;
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+  background-color: #b52a3b;
+}

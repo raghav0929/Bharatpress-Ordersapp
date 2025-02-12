@@ -4,6 +4,7 @@ import { OrderService } from '../services/order.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Order {
+  id: number;
   orderDetails: string;
   phoneNumber: string;
   status: string;
@@ -41,6 +42,7 @@ priorityOptions = [
 ];
 editOrderForm: FormGroup;
 selectedOrderId: number | null = null;
+selectedOrders: any[] = [];
 
 constructor(private fb: FormBuilder, private orderService: OrderService) {
   this.editOrderForm = this.fb.group({
@@ -71,6 +73,42 @@ constructor(private fb: FormBuilder, private orderService: OrderService) {
     }
   }
 
+
+  deleteSelectedOrders() {
+    if (this.selectedOrders.length === 0) {
+      console.log("No orders selected.");
+      return;
+    }
+  
+    if (confirm("Are you sure you want to delete the selected orders?")) {
+      const orderIds = this.selectedOrders.map(order => order.id);
+  
+      this.orderService.deleteMultipleOrders(orderIds).subscribe(
+        () => {
+          this.orderlist = this.orderlist.filter(order => !orderIds.includes(order.id));
+          this.selectedOrders = []; // Clear the selection
+          alert("Selected orders deleted successfully.");
+        },
+        (error) => {
+          console.error("Error deleting orders:", error);
+          alert("Failed to delete selected orders.");
+        }
+      );
+    }
+  }
+  
+
+  onRowClick(event: Event, order: any) {
+  // Prevent checkbox clicks from opening edit modal
+  const targetElement = event.target as HTMLElement;
+
+  // Check if the clicked element is inside a checkbox
+  if (targetElement.tagName === 'INPUT' && targetElement.getAttribute('type') === 'checkbox') {
+    return;
+  }
+
+  this.openEditDialog(order); // Open edit modal only when clicking on the row
+}
   // Filter method to be used for custom filtering
   filterGlobal(event: any, field: string) {
     if (this.dt) {
@@ -106,19 +144,19 @@ constructor(private fb: FormBuilder, private orderService: OrderService) {
 
     // Open the edit dialog when a row is clicked
     openEditDialog(order: any) {
-      this.selectedOrderId = order['data'].id;  // Store the selected order's ID
+      this.selectedOrderId = order.id;  // Store the selected order's ID
     
       // Ensure all fields are populated correctly
       this.editOrderForm.patchValue({
-        orderDetails: order['data'].orderDetails || '',
-        phoneNumber: order['data'].phoneNumber || '',
-        status: order['data'].status || '',
-        priority: order['data'].priority || '',
-        orderDate: order['data'].orderDate || '',
-        estimatedDays: order['data'].estimatedDays || '',
-        totalAmount: order['data'].totalAmount || '',
-        advance: order['data'].advance || '',
-        remainingBalance: order['data'].remainingBalance || (order['data'].totalAmount - order['data'].advance),
+        orderDetails: order.orderDetails || '',
+        phoneNumber: order.phoneNumber || '',
+        status: order.status || '',
+        priority: order.priority || '',
+        orderDate: order.orderDate || '',
+        estimatedDays: order.estimatedDays || '',
+        totalAmount: order.totalAmount || '',
+        advance: order.advance || '',
+        remainingBalance: order.remainingBalance || (order.totalAmount - order.advance),
       });
     
       this.editDialogVisible = true;  // Open the edit dialog

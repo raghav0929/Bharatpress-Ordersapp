@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Order {
+  id: number;
   orderDetails: string;
   phoneNumber: string;
   status: string;
@@ -42,5 +43,10 @@ export class OrderService {
       headers: { 'Content-Type': 'application/json' }
     });
   }
+
+  deleteMultipleOrders(orderIds: number[]): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/delete-multiple`, { orderIds });
+  }
+  
   
 }
