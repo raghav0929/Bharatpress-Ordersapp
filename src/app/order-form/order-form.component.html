@@ -1,5 +1,9 @@
+<!-- Full-screen Spinner -->
+<div *ngIf="loading" class="loading-overlay">
+  <p-progressSpinner></p-progressSpinner>
+</div>
 <h2>Order Entry Form</h2>
-<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit(fileInput)">
   <div>
     <label for="orderDetails">Order Details:</label>
     <input id="orderDetails" formControlName="orderDetails" placeholder="Enter order details" />
@@ -89,5 +93,5 @@
   <button type="submit" pButton   [disabled]="orderForm.invalid">Submit</button>
   
 </form>
-<p-messages></p-messages>
+<p-toast></p-toast>
  

@@ -13,6 +13,7 @@ export class OrderFormComponent implements OnInit {
   orderForm: FormGroup;
   selectedFile: File | null = null;
   filePreview: string | ArrayBuffer | null = null;
+  loading = false;
 
   constructor(private fb: FormBuilder, private orderService: OrderService,private messageService: MessageService) {
     this.orderForm = this.fb.group({
@@ -52,10 +53,10 @@ export class OrderFormComponent implements OnInit {
     fileInput.value = '';   // Clear the file input
     this.selectedFile = null;
 
-    this.messageService.add({ 
-      severity: "success", 
-      summary: "GeeksforGeeks", 
-      detail: "Success Service Message", 
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Form reset',
+      detail: 'Your form is now reset'
     });
   }
 
@@ -66,8 +67,9 @@ export class OrderFormComponent implements OnInit {
     this.orderForm.get('remainingBalance')?.setValue(remaining >= 0 ? remaining : 0);
   }
 
-  onSubmit() {
+  onSubmit(fileInput: HTMLInputElement) {
     if (this.orderForm.valid && this.selectedFile) {
+      this.loading = true; // Show spinner
       const orderJson = {
         orderDetails: this.orderForm.get('orderDetails')!.value,
         phoneNumber: this.orderForm.get('phoneNumber')!.value,
@@ -82,10 +84,28 @@ export class OrderFormComponent implements OnInit {
 
       this.orderService.submitOrder(orderJson, this.selectedFile).subscribe(
         response => {
-          console.log('Success!', response);
+          setTimeout(() => {
+            this.loading = false; // Hide spinner
+  
+            // Show success toast
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Order Added',
+              detail: 'Your order has been placed successfully!'
+            });
+  
+            this.resetForm(fileInput); // Reset form and file input
+          }, 1000); // 1-second delay
         },
         error => {
-          console.error('Error!', error);
+          this.loading = false; // Hide spinner
+
+        // Show error toast
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to add order. Please try again!'
+        });
         }
       ); 
     } else {

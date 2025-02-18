@@ -1,0 +1,42 @@
+.home-container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .option-box {
+    width: 250px;
+    height: 180px;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .option-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .option-box h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .option-box p {
+    font-size: 14px;
+    margin-top: 5px;
+    opacity: 0.8;
+  }
+  

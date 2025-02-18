@@ -316,3 +316,60 @@ tr.p-highlight {
 .delete-btn:hover {
   background-color: #b52a3b;
 }
+
+/* Customize Toast Messages */
+.p-toast .p-toast-message-success {
+  background-color: #28a745 !important; /* Green */
+  color: #fff !important;
+  border-left: 5px solid #155724 !important;
+}
+
+.p-toast .p-toast-message-error {
+  background-color: #dc3545 !important; /* Red */
+  color: #fff !important;
+  border-left: 5px solid #721c24 !important;
+}
+
+.p-toast .p-toast-message-warn {
+  background-color: #ffc107 !important; /* Yellow */
+  color: #000 !important;
+  border-left: 5px solid #856404 !important;
+}
+
+.p-toast .p-toast-message-info {
+  background-color: #17a2b8 !important; /* Blue */
+  color: #fff !important;
+  border-left: 5px solid #0c5460 !important;
+}
+
+/* Adjust Padding and Font */
+.p-toast-message {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 12px 16px !important;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Adjust spinner size & color */
+.loading-overlay .p-progress-spinner {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+/* Change the color of the spinner */
+.loading-overlay svg circle {
+  stroke: white !important; /* Make the spinner white */
+}
+

@@ -19,13 +19,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import {MessagesModule} from 'primeng/messages'; 
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastModule } from 'primeng/toast';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderFormComponent,
     NavbarComponent,
-    OrderListComponent
+    OrderListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import {MessagesModule} from 'primeng/messages';
     BrowserAnimationsModule,
     HttpClientModule ,
     DialogModule,
-    MessagesModule
+    MessagesModule,
+    ProgressSpinnerModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
