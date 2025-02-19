@@ -220,7 +220,7 @@ button:disabled {
   max-height: 80%;
   background: white;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: auto;
   text-align: center;
 }
 

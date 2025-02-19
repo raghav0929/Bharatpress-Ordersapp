@@ -70,6 +70,7 @@ export class OrderFormComponent implements OnInit {
   onSubmit(fileInput: HTMLInputElement) {
     if (this.orderForm.valid && this.selectedFile) {
       this.loading = true; // Show spinner
+      
       const orderJson = {
         orderDetails: this.orderForm.get('orderDetails')!.value,
         phoneNumber: this.orderForm.get('phoneNumber')!.value,
@@ -86,30 +87,30 @@ export class OrderFormComponent implements OnInit {
         response => {
           setTimeout(() => {
             this.loading = false; // Hide spinner
-  
+
             // Show success toast
             this.messageService.add({
               severity: 'success',
               summary: 'Order Added',
               detail: 'Your order has been placed successfully!'
             });
-  
+
             this.resetForm(fileInput); // Reset form and file input
           }, 1000); // 1-second delay
         },
         error => {
           this.loading = false; // Hide spinner
 
-        // Show error toast
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Failed to add order. Please try again!'
-        });
+          // Show error toast
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Failed to add order. Please try again!'
+          });
         }
-      ); 
+      );
     } else {
-      console.log('Form is invalid');
+      console.log('Form is invalid or no file selected');
     }
-  }
+}
 }

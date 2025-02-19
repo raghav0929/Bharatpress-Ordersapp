@@ -26,13 +26,15 @@ export class OrderService {
 
   submitOrder(order: any, file: File): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append('order', JSON.stringify(order)); // Add order JSON
-    formData.append('file', file); // Add file
+    
+    // Convert order object to Blob
+    const orderBlob = new Blob([JSON.stringify(order)], { type: 'application/json' });
+    
+    formData.append('order', orderBlob); // Attach order as Blob
+    formData.append('file', file); // Attach file
 
-    const headers = new HttpHeaders(); // No need to set Content-Type, Angular handles it for FormData
-
-    return this.http.post(this.apiUrl+'/submit', formData, { headers, responseType: 'text' as 'json' });
-  }
+    return this.http.post(this.apiUrl + '/submit', formData, { responseType: 'text' as 'json' });
+}
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.apiUrl+'/all');
