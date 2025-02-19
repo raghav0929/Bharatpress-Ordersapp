@@ -95,7 +95,7 @@
       <td>{{ order.remainingBalance }}</td>
       <td>
         <img
-        [src]="'http://localhost:8080/api/files/' + order.orderPhoto"
+        [src]="order.orderPhoto"
           alt="Order Photo"
           class="order-photo"
           (click)="openModal(order.orderPhoto, $event)"
@@ -109,7 +109,7 @@
 <div class="modal" *ngIf="isModalOpen">
   <div class="modal-content">
     <span class="close-button" (click)="closeModal()">&times;</span>
-    <img [src]="'http://localhost:8080/api/files/' + modalImage"  alt="Order Photo" class="modal-image" />
+    <img [src]='modalImage'  alt="Order Photo" class="modal-image" />
   </div>
 </div>
 <p-dialog header="Edit Order" [(visible)]="editDialogVisible" [modal]="true" [closable]="true">
