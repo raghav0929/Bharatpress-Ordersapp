@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
     standalone: false
 })
 export class NavbarComponent {
-    sidebarVisible: boolean = false;
+    constructor(private loginService: LoginService,private router: Router){}
+
+    logout() {
+        this.loginService.logout();  // Call logout method
+      }
 }

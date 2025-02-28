@@ -1,3 +1,6 @@
-<!-- app.component.html -->
-<app-navbar></app-navbar>
+<!-- Show Navbar only if the user is NOT on the login page -->
+<app-navbar *ngIf="!isLoginPage"></app-navbar>
+
+<!-- This is where pages load -->
 <router-outlet></router-outlet>
+

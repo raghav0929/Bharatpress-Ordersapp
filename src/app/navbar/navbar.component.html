@@ -9,19 +9,17 @@
   <div class="p-toolbar-group-right">
     <!-- Desktop Menu -->
      
-    <button pButton label="Home" icon="pi pi-pencil" routerLink="/" class="p-button-outlined"></button>
-    <button pButton label="Order Form" icon="pi pi-pencil" routerLink="/order-form" class="p-button-outlined"></button>
+    <button pButton label="Home" icon="pi pi-home" routerLink="/" class="p-button-outlined"></button>
+    <button pButton label="Order Form" icon="pi pi-shopping-bag" routerLink="/order-form" class="p-button-outlined"></button>
     <button pButton label="Order List" icon="pi pi-list" routerLink="/order-list" class="p-button-outlined"></button>
-
-    <!-- Mobile Hamburger Button -->
-    <button pButton icon="pi pi-bars" (click)="sidebarVisible = !sidebarVisible" class="p-button-outlined p-button-rounded p-button-secondary"></button>
+    <button pButton label="Logout" icon="pi pi-sign-out" (click)="logout()" class="p-button-outlined"></button>
+  
   </div>
 </p-toolbar>
 
-<p-sidebar [(visible)]="sidebarVisible" position="left" [style]="{width: '250px'}">
-  <h3>Menu</h3>
-  <ul class="p-list">
-    <li><a routerLink="/orderform">Order Form</a></li>
-    <li><a routerLink="/orderlist">Order List</a></li>
-  </ul>
-</p-sidebar>
+
+
+
+
+
+

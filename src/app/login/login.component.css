@@ -1,0 +1,99 @@
+/* Main Container */
+.login-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Left Section - Logo */
+  .left-section {
+    flex: 1;
+    background: #f5e6cc; /* Cream/Beige Background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  /* Right Section - Login Form */
+  .right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fffaf1; /* Light Beige for a Soft Look */
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #5a4632; /* Warm Brownish Text */
+  }
+  
+  /* Form Styling */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6b5641; /* Slightly Darker Beige Text */
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d9c2a3;
+    border-radius: 5px;
+    background: #fdf7ec;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background: #c5a880; /* Warm Beige Button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background: #b19272;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+
+  /* Password Field with Eye Icon */
+  .password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container input {
+    width: 100%;
+    padding-right: 40px; /* Space for the icon */
+    height: 40px; /* Ensure consistent height */
+    border: 1px solid #c4a484;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #6b5641; /* Brownish Icon */
+    font-size: 18px;
+  }
